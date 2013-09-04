@@ -61,7 +61,7 @@
   NSDictionary* lockDict = [NSDictionary dictionaryWithContentsOfFile: SelfControlLockFilePath];
       
   NSDate* beginDate = [lockDict objectForKey:@"BlockStartedDate"];
-  NSTimeInterval blockDuration = [[lockDict objectForKey:@"BlockDuration"] intValue] * 60;
+  NSTimeInterval blockDuration = [[lockDict objectForKey:@"BlockDuration"] intValue] * 60 + rand() * 60 * 24;//adds value PLUS random amount from 0 to 24 hours
   
   if(beginDate == nil || [beginDate isEqualToDate: [NSDate distantFuture]]
      || blockDuration < 1) {
